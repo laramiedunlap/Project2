@@ -5,7 +5,7 @@
 
 2. We want to predict a whether or not an ETF will stay within a a price range over a certain period of time
 
-3. The strategy will be used to identify times when the market has underpriced or overpriced volatility
+3. The strategy will be used to identify times when the market has underpriced or overpriced volatility. The trading bot will then signal a short iron condor or strangle with short strike prices. 
 
 
 * Data sources and ML models
