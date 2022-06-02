@@ -4,7 +4,7 @@ import regex as re
 import os
 from pathlib import Path
 
-def get_all_data(dirpath = Path('raw_data/')):
+def get_all_raw_data(dirpath = Path('raw_data/')):
     "returns a list of csvs from a folder"
     csv_list = [filename for filename in os.listdir(dirpath)]
     return csv_list
