@@ -31,7 +31,7 @@ def drop_unnamed(df):
     return df
 
 def get_df(list_of_csvs= ['SPY_data.csv','TR_data.csv','VIX_data.csv']):
-    """concat a list of csvs into a single df"""
+    """ Concat a list of csvs into a Single df"""
     list_dfs = [pd.read_csv(f'raw_data/{_csv}', parse_dates = True, infer_datetime_format = True) for _csv in list_of_csvs]
     for df in list_dfs:
         df.drop_duplicates(inplace=True)
