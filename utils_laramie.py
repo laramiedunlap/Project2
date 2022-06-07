@@ -3,6 +3,7 @@ import datetime as dt
 import regex as re
 import os
 from pathlib import Path
+import numpy as np
 
 def get_all_raw_data(dirpath = Path('raw_data/')):
     "returns a list of csvs from a folder"
@@ -97,3 +98,15 @@ def drop_off_weeks(df_input):
     df_copy = df_copy.reset_index()
     df_copy.drop(columns=['year', 'week', 'day'], inplace= True)
     return df_copy
+
+def get_X_y(df):
+    df['target']= df['weekly_range'].shift(-5)
+    df.dropna(inplace=True)
+    df.drop(columns='weekly_range', inplace=True)
+    num_cols = len(df.columns.to_list()[:-1])
+    num_rows = len(df[df.columns.to_list()[:-1]].values)
+    chunks = 5
+    zed = int((num_cols*num_rows)/(chunks*num_cols))
+    X = np.reshape(df[df.columns.to_list()[:-1]].values, (zed, chunks, num_cols))
+    y= np.reshape(df[df['target'] != 0 ]['target'].values, (-1, 1, 1))
+    return X , y
