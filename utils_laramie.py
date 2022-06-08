@@ -96,6 +96,7 @@ def drop_off_weeks(df_input):
                 except:
                     continue
     df_copy = df_copy.reset_index()
+    # Note: Here we could reorganize this data into a datetime index
     df_copy.drop(columns=['year', 'week', 'day'], inplace= True)
     return df_copy
 
@@ -105,6 +106,7 @@ def get_X_y(df):
     df.drop(columns='weekly_range', inplace=True)
     num_cols = len(df.columns.to_list()[:-1])
     num_rows = len(df[df.columns.to_list()[:-1]].values)
+    # Note: Here we could make chunks a user input, so instead of a week you could look at a month, or two days, whatever
     chunks = 5
     zed = int((num_cols*num_rows)/(chunks*num_cols))
     X = np.reshape(df[df.columns.to_list()[:-1]].values, (zed, chunks, num_cols))
