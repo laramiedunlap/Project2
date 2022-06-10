@@ -85,13 +85,13 @@ def lstm_model(X_train_scaled,number_units, optimizer, loss, metrics):
     # Layer 1
     lstm_model.add(LSTM(
     units=number_units,
-    # return_sequences=True,
+    return_sequences=True,
     input_shape=(X_train_scaled.shape[1],X_train_scaled.shape[2]*X_train_scaled.shape[3])
     ))
     lstm_model.add(Dropout(dropout_fraction))
-    # # Layer 2
-    # lstm_model.add(LSTM(units=number_units))
-    # lstm_model.add(Dropout(dropout_fraction))
+    # Layer 2
+    lstm_model.add(LSTM(units=number_units))
+    lstm_model.add(Dropout(dropout_fraction))
     # Output layer
     lstm_model.add(Dense(1))
 
