@@ -31,6 +31,8 @@ def drop_unnamed(df):
     for col in df.columns:
         if 'unnamed' in str(col):
             df.drop(columns= col, inplace=True)
+        if 'Unnamed' in str(col):
+            df.drop(columns= col, inplace=True)
     return None
 
 def get_df(list_of_csvs= ['SPY_data.csv','TR_data.csv','VIX_data.csv']):
