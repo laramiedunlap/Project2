@@ -90,6 +90,9 @@ def lstm_model(X_train_scaled,number_units, optimizer, loss, metrics):
     ))
     lstm_model.add(Dropout(dropout_fraction))
     # Layer 2
+    lstm_model.add(LSTM(units=number_units, return_sequences=True))
+
+    # Layer 3
     lstm_model.add(LSTM(units=number_units))
     lstm_model.add(Dropout(dropout_fraction))
     # Output layer
@@ -112,9 +115,9 @@ def lstm_evaluation(X_train_scaled, y_train_scaled, X_val_scaled, y_val_scaled, 
     '''
     This function evaluates the LSTM model
     '''
-    train_loss,train_mse,train_mae  = model_fitted.evaluate(X_train_scaled.reshape(X_train_scaled.shape[0],X_train_scaled.shape[1],-1), y_train_scaled,verbose=0)
-    val_loss,val_mse,val_mae  = model_fitted.evaluate(X_val_scaled.reshape(X_val_scaled.shape[0],X_val_scaled.shape[1],-1), y_val_scaled,verbose=0)
-    return train_loss,train_mse,train_mae,val_loss,val_mse,val_mae
+    train_loss,train_rmse = model_fitted.evaluate(X_train_scaled.reshape(X_train_scaled.shape[0],X_train_scaled.shape[1],-1), y_train_scaled,verbose=0)
+    val_loss,val_rmse  = model_fitted.evaluate(X_val_scaled.reshape(X_val_scaled.shape[0],X_val_scaled.shape[1],-1), y_val_scaled,verbose=0)
+    return train_loss,train_rmse,val_loss,val_rmse
 
 
 def lstm_prediction(X_test_scaled, y_test_scaled,model_fitted,scaler):
