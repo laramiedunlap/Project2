@@ -9,20 +9,27 @@
 
 
 * Data sources and ML models
-1. We will use Alpaca API to gather ETF historical data, 2015-2022.
+1. We will use Alpaca API to gather SPY ETF historical data, and VIX data from 2015-2022.
 
 2. For technical indicators, we will use the finta library
+    Range Indicators:
+    -Average True Range (ATR)
+    -Keltner Channels(KC)
+    -Mass Index (MI)
+    
+    Momentum indicators:
+    -Volatility Based Momentum(VBM)
+    - Dynamic Momentum Index(DYMI)
+    -Adaptive Price Zone (APZ)
 
-3. Models for Range Prediction:
----
-    ANN
-    LSTM
+    Moving Average indicators:
+    -BBands
+    -KAMA
 
-4. Models for Classifing in-range and out-of-range trades:
+
+3. Model for Range Prediction:
 ---
-    Random Forest Classifier
-    RNN
-    K-means Clustering
+    Long Short Term Memory (LSTM)- uses historical data to predict future values. Good for time series data.
 
 
 Project Outline:
@@ -36,22 +43,14 @@ Project Outline:
     Data Preprocessing:
         a) feature - target separation
         b) test and training data scaling
+        c) reshaping
     Model Testing
     Model Evaluation
     Model Prediction
     Visualizations
 
 
-    * Make a .ipynb with your name
-    * feel free to make .py files with utilities
-
 ETFs:
 ---
-    Emerging Markets ETF: EWM
-    Russell (small caps): IWM
-    ** Market Index: SPY **
-    Fincance, energy: XLF , XLE
-    Cons. Disc.: XLY
-    Gold Miners: GDX
-    Tech: XLK
-    SemiCond.: SMH
+ Market Index: SPY 
+
